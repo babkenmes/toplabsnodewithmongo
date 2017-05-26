@@ -21,6 +21,7 @@ router.get('/', function (req, res) {
 
 router.get('/:firstname', function (req, res) {
    const firstname = req.params.firstname;
+   $or
    User.find({"firstName":firstname},function(err,data){
 		if(err){console.log("error",err);}
 		res.send( data );
