@@ -1,0 +1,23 @@
+First Name: <input type="text" id="firstName"/>
+Last Name: <input type="text" id="lastName"/>
+Middle Name: <input type="text" id="middleName"/>
+<button onclick="saveUser()">New User</button>
+<script>
+function saveUser(){
+	var firstName =document.getElementById("firstName").value;
+	var lastName = document.getElementById("lastName").value;
+	var middleName = document.getElementById("middleName").value;
+	var user = {
+		"firstName":firstName,
+		"lastName":lastName,
+		"middleName":middleName
+	}
+	var xhr = new XMLHttpRequest();
+	xhr.open("POST", '/newuser', true)
+	xhr.setRequestHeader('Content-Type', 'application/json')
+	xhr.onreadystatechange = function(){
+		console.log("sent")
+	};
+	xhr.send(JSON.stringify(user));
+}
+</script>
